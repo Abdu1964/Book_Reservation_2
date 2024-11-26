@@ -7,6 +7,12 @@
     "scripts": {
          
         "test":"node app controllers/authController.js",
+        "test1":"node app routes/auth.js",
+        
+        "test2":"node app controllers/authController.js",
+        "test3":"node app controllers/reservationController.js",
+    
+
         "dev": "nodemon app.js"
     },
     "author": "",
