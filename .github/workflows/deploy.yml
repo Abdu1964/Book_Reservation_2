@@ -1,13 +1,20 @@
-name: Test & Deploy Workflow
+name: CI - Node.js Application Tests
 
 on:
-  push:           # Trigger on every push
-  pull_request:   # Trigger on every pull request
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
-    name: Run Tests
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14, 16, 18] # Test on multiple Node.js versions
 
     steps:
       - name: Checkout code
@@ -15,8 +22,25 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
-        with: 
-          node-version: '18' # Use stable Node.js version
-          cache: "npm"
+        with:
+          node-version: ${{ matrix.node-version }}
 
-       
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Upload test results (optional)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: test-results # Customize based on where your tests save results
+
+      - name: Report coverage (optional)
+        run: |
+          if [ -f coverage/lcov.info ]; then
+            npm install -g coveralls
+            coveralls < coverage/lcov.info
+          fi
