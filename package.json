@@ -5,10 +5,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test1":"node app controllers/authController.js",
-        "test2":"node app controllers/bookController.js.js",
-        "test3":"node app route/auth.js",
-        "start4": "node app.js",
+         
         "test":"jest",
         "dev": "nodemon app.js"
     },
