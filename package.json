@@ -6,7 +6,7 @@
     "main": "index.js",
     "scripts": {
          
-        "test":"node app controllers/authController.js",
+        "test":"jest",
         "test1":"node app routes/auth.js",
         
         "test2":"node app controllers/authController.js",
