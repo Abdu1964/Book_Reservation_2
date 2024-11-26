@@ -39,9 +39,15 @@ jobs:
         continue-on-error: true # Allow the workflow to proceed even if linting fails
 
       # Step 6: (Skipped) Run tests
-      # Temporarily skip because there is an error in the code even when i run it locally the test step to avoid errors:
-      # - name: Run tests
-      #   run: npm test
+      
+      - name: Run tests
+        run: |
+         
+          npm test1
+          npm test2
+          npm test3
+          npm test4
+           npm test
 
       # Step 7: Check for outdated dependencies (optional but useful for maintenance
       - name: Check for outdated dependencies

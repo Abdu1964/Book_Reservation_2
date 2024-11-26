@@ -1,3 +1,5 @@
+const config = require('../config/database');
+
 // tests/userController.test.js
 const request = require('supertest');
 const mongoose = require('mongoose');

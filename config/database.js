@@ -1,4 +1,7 @@
 module.exports = {
-    database: 'mongodb://localhost/book_reservation_app',
-    secret: 'your_jwt_secret'
-  };
+  // MongoDB connection URI for your MongoDB Atlas instance
+  database: 'mongodb+srv://abdaiyan26:QY9AULMMjPRiuY0C@cluster0.cf4qs.mongodb.net/book_reservation_app?retryWrites=true&w=majority',
+  
+  // Your JWT secret (make sure to keep this private)
+  secret: '123456'
+};
