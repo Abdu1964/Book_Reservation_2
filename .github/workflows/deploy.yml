@@ -13,20 +13,51 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18' # Compatible version for your dependencies
-          cache: 'npm'
+          node-version: '18' # Use the version compatible with your app
+          cache: 'npm'       # Cache npm dependencies for faster builds
 
+      # Step 3: Clean up previous installs (optional but helps with issues)
       - name: Clean up node_modules and package-lock.json
         run: |
           rm -rf node_modules package-lock.json
 
+      # Step 4: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      
+      # Step 5: Lint code (optional but recommended for code quality)
+      - name: Lint code
+        run: npm run lint
+        continue-on-error: true # Allow the workflow to proceed even if linting fails
+
+      # Step 6: Run tests
+      - name: Run tests
+        run: npm test
+
+      # Step 7: Check for outdated dependencies (optional but useful for maintenance)
+      - name: Check for outdated dependencies
+        run: npm outdated
+        continue-on-error: true # Continue even if there are outdated dependencies
+
+      # Step 8: Upload test results (optional for reports)
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: |
+            test-results.xml
+            coverage/
+
+      # Step 9: Notify on failure (optional for better monitoring)
+      - name: Notify failure
+        if: failure()
+        run: echo "A build or test failure occurred. Please investigate!"
