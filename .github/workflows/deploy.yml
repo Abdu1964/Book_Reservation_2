@@ -43,7 +43,7 @@ jobs:
       # - name: Run tests
       #   run: npm test
 
-      # Step 7: Check for outdated dependencies (optional but useful for maintenance)
+      # Step 7: Check for outdated dependencies (optional but useful for maintenance
       - name: Check for outdated dependencies
         run: npm outdated
         continue-on-error: true
