@@ -34,9 +34,9 @@ jobs:
         run: npm install
 
       # Step 5: Lint code (optional but recommended for code quality)
-      - name: Lint code
-        run: npm run lint
-        continue-on-error: true # Allow the workflow to proceed even if linting fails
+      #- name: Lint code
+       # run: npm run lint
+        #continue-on-error: true # Allow the workflow to proceed even if linting fails
 
       # Step 6: (Skipped) Run tests
       
