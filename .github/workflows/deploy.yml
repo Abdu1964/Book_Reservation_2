@@ -43,10 +43,10 @@ jobs:
       - name: Run tests
         run: |
          
-          npm test1
-          npm test2
-          npm test3
-          npm test4
+          npm run test1
+          npm run test2
+          npm run test3
+          npm run test4
            npm test
 
       # Step 7: Check for outdated dependencies (optional but useful for maintenance
